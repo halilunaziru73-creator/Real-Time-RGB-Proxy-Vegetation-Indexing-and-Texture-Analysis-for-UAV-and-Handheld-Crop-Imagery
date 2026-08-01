@@ -1,0 +1,27 @@
+# === N_GACL unified requirements ===
+# Combines the classical agronomic image-analysis pipeline (core/, qgis_ui/,
+# main.py, main_classic.py) with the GACL reference implementation (gacl/,
+# train_gacl.py, evaluate_gacl.py, check_learnable_structure.py).
+
+# --- Core (required for the classical pipeline) ---
+numpy
+Pillow
+matplotlib>=3.5
+scikit-image>=0.19    # GLCM texture features (skimage.feature.graycomatrix)
+scipy                  # image shifting for alignment (scipy.ndimage)
+pandas                  # tabular data I/O, GACL_Data.xlsx loading
+openpyxl>=3.0           # .xlsx reading (pandas engine)
+
+# --- Optional but recommended (classical pipeline extra features) ---
+scikit-learn>=1.3     # PCA, k-NN, K-Means, RandomForest (also used by check_learnable_structure.py)
+torch>=2.0              # ResNet101 / Faster R-CNN (classical pipeline) AND GACL model (gacl/)
+torchvision            # ResNet101, Faster R-CNN
+
+# --- Required for the QGIS-style GIS Workbench (main.py) ---
+PyQt6
+
+# --- Optional: only needed for "Load UAV Multispectral..." ---
+rasterio
+
+# --- GACL-specific (gacl/, train_gacl.py, evaluate_gacl.py) ---
+# torch, pandas, scikit-learn, openpyxl already listed above cover GACL's needs.
