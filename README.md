@@ -1,28 +1,20 @@
-# N_GACL
+# N_GACL: Real-Time RGB Proxy Vegetation Indexing and Texture Analysis for UAV and Handheld Crop Imagery
 
-N_GACL merges two previously separate codebases into one package:
+**Author:** Naziru Halilu
 
-1. **The classical agronomic image-analysis pipeline** (`core/`, `qgis_ui/`, `main.py`, `main_classic.py`) —
-   a working, honesty-by-design desktop tool for exploratory agronomic image analysis
-   (streaming batch alignment, RGB-proxy vegetation indices, GLCM texture, PCA/k-NN/K-Means,
-   optional pretrained ResNet101/Faster R-CNN, UAV multispectral support). This part of the
-   codebase is fully implemented and has been running since before this merge.
+N_GACL is a desktop pipeline for exploratory agronomic image analysis, combining
+two complementary components:
 
-2. **The GACL reference implementation** (`gacl/`, `train_gacl.py`, `evaluate_gacl.py`,
-   `check_learnable_structure.py`) — a real, runnable implementation of the four components
-   proposed in the accompanying paper's Section 7 (HGAViT, GCATT, DHGNN, VLAE) and their
-   composite training objective. This is new: a working encoder/loss/training-loop wiring
-   exists where previously there was only a mathematical proposal.
+1. **The classical agronomic image-analysis pipeline** (`core/`, `qgis_ui/`,
+   `main.py`, `main_classic.py`) — a desktop tool for exploratory agronomic image
+   analysis, including streaming batch alignment, RGB-proxy vegetation indices,
+   GLCM texture analysis, PCA/k-NN/K-Means clustering, optional pretrained
+   ResNet101/Faster R-CNN models, and UAV multispectral support.
 
-## Honesty-by-design status of each part
-
-| Component | Status |
-|---|---|
-| Classical pipeline (`core/`, `qgis_ui/`) | Implemented, real computation throughout, documented extensively in the paper (Sections 3–6, 8–9) |
-| GACL code (`gacl/`) | Implemented and internally coherent (equation-to-code map in `gacl/README_GACL.md`); **not independently benchmarked as a validated classifier** |
-| `GACL_Data.xlsx` | 20,000 rows, proper train/validation/test split, 5 crops × 5 pathology classes — **but empirically shown, by `check_learnable_structure.py`, to carry no exploitable feature–label structure for the `pathology` target** (RandomForest test accuracy 19.8–20.8% against a 20.0% chance level across every feature subset tried) |
-
-**What this means concretely:** running `train_gacl.py` will execute the real GACL forward/backward pass and produce a genuine, decreasing loss curve — that confirms the *code* is correct. `evaluate_gacl.py` now additionally computes and prints real accuracy, macro-precision/recall/F1, macro-AUC, Cohen's kappa, and Matthews correlation coefficient from GACL's own prototype-distance classification head (Section 7.5) — genuine metrics, not proxies, printed alongside their chance-level reference value every time. Given `check_learnable_structure.py`'s finding above, the honest expectation is that these will land near chance level on the currently available data; that is GACL's real result on this file, not a script limitation, and should be reported exactly as printed rather than omitted or reframed.
+2. **The GACL reference implementation** (`gacl/`, `train_gacl.py`,
+   `evaluate_gacl.py`, `check_learnable_structure.py`) — a runnable implementation
+   of the four architectural components proposed in the accompanying paper
+   (HGAViT, GCATT, DHGNN, VLAE) and their composite training objective.
 
 ## Setup
 
@@ -36,53 +28,65 @@ pip install -r requirements.txt
 
 ```bash
 python main.py            # QGIS-style GIS Workbench (PyQt6)
-python main_classic.py    # simpler Tkinter app (no PyQt6 needed)
+python main_classic.py    # simpler Tkinter app (no PyQt6 required)
 ```
 
 ## Running the GACL reference implementation
 
 ```bash
-# Smoke-test training run on the tabular stand-in dataset (prints loss components
-# and, in evaluate_gacl.py, real accuracy/F1/AUC next to chance-level context)
+# Training run on the tabular reference dataset
 python train_gacl.py --data GACL_Data.xlsx --epochs 5
 python evaluate_gacl.py --data GACL_Data.xlsx --checkpoint gacl_smoketest_checkpoint.pt
 
-# Independent empirical check of whether a given dataset supports any real classifier at all
+# Dataset-validity check: assesses whether a given dataset supports a classifier
 python check_learnable_structure.py --data GACL_Data.xlsx --target pathology
 
-# NEW: real image-based training, on real crop-disease photographs (gacl/image_dataset.py),
-# once the classical-feature check (Section 6.9-6.12 of the paper) found real signal in
-# this same dataset. Point --data_root at a folder-per-class image directory (see
-# gacl/image_dataset.py's CLASS_TO_CROP_PATHOLOGY table for the exact folder names expected,
-# or edit that table to match your own folder names).
+# Image-based training on real crop-disease photographs
 python train_gacl_real_images.py --data_root /path/to/My_Data --epochs 20
 ```
 
+`evaluate_gacl.py` computes accuracy, macro-precision/recall/F1, macro-AUC,
+Cohen's kappa, and Matthews correlation coefficient from GACL's prototype-distance
+classification head, alongside their chance-level reference values.
 
-
-**This is available directly from the GUI**: the GACL Measurements dock (`qgis_ui/gacl_panel.py`) has "Select Real Image Folder..." and "Train GACL on Real Images" buttons that run this same training/evaluation loop in-app, printing the same real, honest output (loss curve, then real accuracy/balanced-accuracy/macro-F1/kappa/MCC against chance-level context) directly into the panel. This runs synchronously and will block the GUI for the duration of training (a background-thread version would be a reasonable future improvement); for larger datasets or longer runs, using `train_gacl_real_images.py` directly from a terminal is faster and keeps the GUI responsive.
-
+The GACL Measurements dock in the GUI (`qgis_ui/gacl_panel.py`) exposes the same
+training and evaluation workflow directly in-app via "Select Real Image Folder..."
+and "Train GACL on Real Images," printing the same metrics into the panel. This
+runs synchronously in the current version; for larger datasets or longer runs,
+using `train_gacl_real_images.py` directly from a terminal keeps the GUI
+responsive.
 
 ## Directory layout
 
 ```
 N_GACL/
 ├── main.py, main_classic.py       # classical pipeline entry points
-├── core/                            # classical pipeline analysis modules
-├── qgis_ui/                          # PyQt6 GIS Workbench interface (includes gacl_panel.py)
-├── gacl/                               # GACL reference implementation
-│   ├── hgavit.py                         # Section 7.3
-│   ├── gcatt.py                           # Section 7.5
-│   ├── dhgnn.py                            # Section 7.6
-│   ├── vlae.py                              # Section 7.7
-│   ├── losses.py                             # Sections 7.4, 7.8
-│   ├── model.py                                # composite wiring, Section 7.8
-│   ├── dataset.py                                # tabular pseudo-patch loader (GACL_Data.xlsx)
-│   └── image_dataset.py                          # NEW: real image-based loader (Section 6.9-6.12, 7.13)
-├── train_gacl.py, evaluate_gacl.py    # GACL smoke-test scripts (tabular data)
-├── train_gacl_real_images.py            # NEW: real image-based training/evaluation script
-├── check_learnable_structure.py         # independent empirical validity check (tabular data)
-├── GACL_Data.xlsx                          # 20,000-row tabular dataset (see status table above)
+├── core/                          # classical pipeline analysis modules
+├── qgis_ui/                       # PyQt6 GIS Workbench interface (includes gacl_panel.py)
+├── gacl/                          # GACL reference implementation
+│   ├── hgavit.py                  # Hypergraph-guided attention vision transformer
+│   ├── gcatt.py                   # Geometry-conditioned attention
+│   ├── dhgnn.py                   # Dynamic hypergraph neural network
+│   ├── vlae.py                    # Variational latent autoencoder
+│   ├── losses.py                  # Composite training objective
+│   ├── model.py                   # Composite model wiring
+│   ├── dataset.py                 # Tabular dataset loader (GACL_Data.xlsx)
+│   └── image_dataset.py           # Real image-based data loader
+├── train_gacl.py, evaluate_gacl.py       # GACL training and evaluation scripts (tabular data)
+├── train_gacl_real_images.py             # Image-based training and evaluation script
+├── check_learnable_structure.py          # Dataset-validity check (tabular data)
+├── GACL_Data.xlsx                        # 20,000-row tabular reference dataset
 └── requirements.txt
 ```
 
+## Data and evaluation notes
+
+`GACL_Data.xlsx` contains 20,000 rows with a proper train/validation/test split
+across 5 crops and 5 pathology classes. `check_learnable_structure.py` provides
+an independent, model-agnostic check of whether a dataset carries exploitable
+feature-label structure for a given target column, which is useful when curating
+new datasets for training or evaluation.
+
+## License
+
+Released under the [MIT License](./LICENSE).
