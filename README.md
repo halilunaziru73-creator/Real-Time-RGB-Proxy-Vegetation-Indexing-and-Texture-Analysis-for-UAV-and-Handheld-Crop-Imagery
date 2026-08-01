@@ -76,8 +76,56 @@ N_GACL/
 ├── train_gacl_real_images.py             # Image-based training and evaluation script
 ├── check_learnable_structure.py          # Dataset-validity check (tabular data)
 ├── GACL_Data.xlsx                        # 20,000-row tabular reference dataset
+├── figures/                              # 12 manuscript figures, extracted directly from the manuscript
 └── requirements.txt
 ```
+
+## Figures
+
+All 12 figures from the manuscript, extracted directly from the manuscript, are
+in `figures/`:
+
+![System architecture and control-flow schematics](figures/Figure_01_system_architecture_control_flow.png)
+**Figure 1** — System architecture and control-flow schematics.
+
+![Demonstration image set](figures/Figure_02_demonstration_image_set.png)
+**Figure 2** — Demonstration image set: eight procedurally generated sample
+images.
+
+![Streaming alignment and RGB-proxy vegetation index](figures/Figure_03_streaming_alignment_vegetation_index.png)
+**Figure 3** — Streaming alignment and RGB-proxy vegetation/water index
+computation.
+
+![GLCM texture and contrastive-loss diagnostics](figures/Figure_04_glcm_texture_contrastive_loss.png)
+**Figure 4** — GLCM texture, descriptor invariance, and contrastive-loss
+diagnostics.
+
+![Batch summary and classification diagnostics](figures/Figure_05_batch_summary_trend_classification.png)
+**Figure 5** — Batch summary, trend, and classification diagnostics.
+
+![Optional sensing modalities and canopy segmentation](figures/Figure_06_optional_sensing_canopy_segmentation.png)
+**Figure 6** — Optional sensing modalities and canopy segmentation.
+
+![GIS Workbench session I](figures/Figure_07_gis_workbench_session1_index_layers.png)
+**Figure 7** — GIS Workbench live session I: overview and index layers.
+
+![GIS Workbench session II](figures/Figure_08_gis_workbench_session2_crossc_rop_spectral.png)
+**Figure 8** — GIS Workbench live session II: cross-crop, root, and spectral
+diagnostics.
+
+![GIS Workbench session III](figures/Figure_09_gis_workbench_session3_gacl_panel.png)
+**Figure 9** — GIS Workbench live session III: GACL panel integration.
+
+![Hold-out classifier benchmark](figures/Figure_10_holdout_classifier_benchmark.png)
+**Figure 10** — Real held-out classifier benchmark on the reference dataset.
+
+![Real classification results](figures/Figure_11_real_classification_results.png)
+**Figure 11** — Real classification results on independently sourced
+crop-disease photographs.
+
+![Representative photographs per class](figures/Figure_12_representative_photos_per_class.png)
+**Figure 12** — One representative photograph per class (22 classes: cotton,
+rice, maize, wheat, sugarcane, and others).
 
 ## Data and evaluation notes
 
