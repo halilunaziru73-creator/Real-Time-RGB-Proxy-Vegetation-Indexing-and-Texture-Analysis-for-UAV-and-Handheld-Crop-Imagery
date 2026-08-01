@@ -31,5 +31,4 @@ represented in the full dataset:
 - maize fall armyworm
 - maize stem borer
 
-If you need the full dataset, contact the repository owner or store it
-externally (e.g. Zenodo, Google Drive) and link it here.
+
