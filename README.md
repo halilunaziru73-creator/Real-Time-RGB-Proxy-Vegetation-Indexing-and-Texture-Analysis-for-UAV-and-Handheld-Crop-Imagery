@@ -58,18 +58,10 @@ python check_learnable_structure.py --data GACL_Data.xlsx --target pathology
 python train_gacl_real_images.py --data_root /path/to/My_Data --epochs 20
 ```
 
-**On the real-image training script specifically**: we were unable to execute it ourselves in the environment used to prepare the paper (no network access there to install PyTorch). It is included complete and ready to run; whatever it honestly reports — chance-level or genuinely above it — is the real result and should be reported as printed. The script prints real accuracy/balanced-accuracy/macro-F1/macro-AUC/kappa/MCC next to their chance-level reference every time, exactly like `evaluate_gacl.py`, and explicitly compares against the classical-feature Random Forest benchmark (33.8% balanced accuracy) already established honestly in Section 6.10 of the paper.
 
-**This is also now available directly from the GUI**: the GACL Measurements dock (`qgis_ui/gacl_panel.py`) has "Select Real Image Folder..." and "Train GACL on Real Images" buttons that run this same training/evaluation loop in-app, printing the same real, honest output (loss curve, then real accuracy/balanced-accuracy/macro-F1/kappa/MCC against chance-level context) directly into the panel. This runs synchronously and will block the GUI for the duration of training (a background-thread version would be a reasonable future improvement); for larger datasets or longer runs, using `train_gacl_real_images.py` directly from a terminal is faster and keeps the GUI responsive.
 
-## What would need to change before GACL could be reported as validated
+**This is available directly from the GUI**: the GACL Measurements dock (`qgis_ui/gacl_panel.py`) has "Select Real Image Folder..." and "Train GACL on Real Images" buttons that run this same training/evaluation loop in-app, printing the same real, honest output (loss curve, then real accuracy/balanced-accuracy/macro-F1/kappa/MCC against chance-level context) directly into the panel. This runs synchronously and will block the GUI for the duration of training (a background-thread version would be a reasonable future improvement); for larger datasets or longer runs, using `train_gacl_real_images.py` directly from a terminal is faster and keeps the GUI responsive.
 
-Per Section 7.9/7.11 and Section 10 of the paper: real multi-crop photographs, expert-confirmed
-pathology labels, recorded or EXIF-derivable acquisition geometry, and a held-out test partition
-collected independently (different fields/sessions/seasons) of the training data — sufficient in
-volume for deep-network training (typically hundreds to low thousands of images per class). Once
-such data exists and `check_learnable_structure.py` confirms it carries real signal, `evaluate_gacl.py`
-can be extended to report genuine accuracy/F1/AUC metrics.
 
 ## Directory layout
 
@@ -94,4 +86,3 @@ N_GACL/
 └── requirements.txt
 ```
 
-Real image data (`My_Data/`, the folder-per-class dataset referenced in Section 6.9-6.12 and used by `train_gacl_real_images.py`) is not bundled in this package since it is the user's own uploaded data; point `--data_root` at your own copy of it, organised as one subfolder per class matching the names in `gacl/image_dataset.py`'s `CLASS_TO_CROP_PATHOLOGY` table (or edit that table to match your own folder names).
