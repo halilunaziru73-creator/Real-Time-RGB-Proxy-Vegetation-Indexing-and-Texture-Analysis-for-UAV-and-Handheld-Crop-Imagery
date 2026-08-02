@@ -1,5 +1,7 @@
 # N_GACL: Real-Time RGB Proxy Vegetation Indexing and Texture Analysis for UAV and Handheld Crop Imagery
 
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](./LICENSE) ![Python](https://img.shields.io/badge/Python-3.10%2B-blue)
+
 **Author:** Naziru Halilu
 
 N_GACL is a desktop pipeline for exploratory agronomic image analysis, combining
@@ -147,6 +149,12 @@ new datasets for training or evaluation.
 ## License
 
 Released under the [MIT License](./LICENSE).
+
+## Citation
+
+If you use this repository, please cite it using the metadata in
+[`CITATION.cff`](./CITATION.cff) (GitHub renders a "Cite this repository"
+button on the repo's main page, in the top-right "About" panel).
 
 ## Related work
 
