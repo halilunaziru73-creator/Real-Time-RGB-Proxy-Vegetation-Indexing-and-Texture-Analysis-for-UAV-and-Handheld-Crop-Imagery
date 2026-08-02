@@ -7,7 +7,7 @@
 numpy
 Pillow
 matplotlib>=3.5
-scikit-image>=0.19    # GLCM texture features (skimage.feature.graycomatrix)
+scikit-image>=0.26.0    # GLCM texture features (skimage.feature.graycomatrix)
 scipy                  # image shifting for alignment (scipy.ndimage)
 pandas                  # tabular data I/O, GACL_Data.xlsx loading
 openpyxl>=3.0           # .xlsx reading (pandas engine)
