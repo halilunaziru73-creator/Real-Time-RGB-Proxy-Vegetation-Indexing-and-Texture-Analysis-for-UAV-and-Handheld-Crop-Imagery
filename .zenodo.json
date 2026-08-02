@@ -1,0 +1,21 @@
+{
+  "title": "N_GACL: Real-Time RGB Proxy Vegetation Indexing and Texture Analysis for UAV and Handheld Crop Imagery",
+  "description": "N_GACL: Real Time RGB Proxy Vegetation Indexing and Texture Analysis for UAV and Handheld Crop Imagery - a desktop pipeline for exploratory agronomic image analysis",
+  "creators": [
+    {
+      "name": "Halilu, Naziru",
+      "orcid": "0009-0006-2324-9599"
+    }
+  ],
+  "keywords": [
+    "UAV",
+    "remote sensing",
+    "image analysis",
+    "precision agriculture",
+    "texture analysis",
+    "vegetation index"
+  ],
+  "license": "MIT",
+  "upload_type": "software",
+  "access_right": "open"
+}
