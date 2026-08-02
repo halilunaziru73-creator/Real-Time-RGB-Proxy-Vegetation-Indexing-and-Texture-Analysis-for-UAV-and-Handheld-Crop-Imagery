@@ -16,7 +16,16 @@ two complementary components:
    of the four architectural components proposed in the accompanying paper
    (HGAViT, GCATT, DHGNN, VLAE) and their composite training objective.
 
-## Setup
+## How to Run the Code
+
+### 1. Clone the repository
+
+```bash
+git clone https://github.com/halilunaziru73-creator/Real-Time-RGB-Proxy-Vegetation-Indexing-and-Texture-Analysis-for-UAV-and-Handheld-Crop-Imagery.git
+cd Real-Time-RGB-Proxy-Vegetation-Indexing-and-Texture-Analysis-for-UAV-and-Handheld-Crop-Imagery
+```
+
+### 2. Setup
 
 ```bash
 python -m venv venv
