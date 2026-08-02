@@ -6,7 +6,7 @@
 # --- Core (required for the classical pipeline) ---
 numpy
 Pillow
-matplotlib>=3.5
+matplotlib>=3.11.1
 scikit-image>=0.19    # GLCM texture features (skimage.feature.graycomatrix)
 scipy                  # image shifting for alignment (scipy.ndimage)
 pandas                  # tabular data I/O, GACL_Data.xlsx loading
