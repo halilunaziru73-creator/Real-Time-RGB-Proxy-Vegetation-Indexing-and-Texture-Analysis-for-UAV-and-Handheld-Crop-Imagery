@@ -1,0 +1,17 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+type: software
+title: "N_GACL: Real-Time RGB Proxy Vegetation Indexing and Texture Analysis for UAV and Handheld Crop Imagery"
+authors:
+  - family-names: Halilu
+    given-names: Naziru
+repository-code: "https://github.com/halilunaziru73-creator/Real-Time-RGB-Proxy-Vegetation-Indexing-and-Texture-Analysis-for-UAV-and-Handheld-Crop-Imagery"
+license: MIT
+date-released: "2026-08-02"
+keywords:
+  - UAV
+  - remote sensing
+  - image analysis
+  - precision agriculture
+  - texture analysis
+  - vegetation index
