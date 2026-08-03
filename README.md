@@ -1,7 +1,7 @@
 # N_GACL: Real-Time RGB Proxy Vegetation Indexing and Texture Analysis for UAV and Handheld Crop Imagery
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](./LICENSE) ![Python](https://img.shields.io/badge/Python-3.10%2B-blue)
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.21760033.svg)](https://doi.org/10.5281/zenodo.21760033)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.21760032.svg)](https://doi.org/10.5281/zenodo.21760032)
 
 **Author:** Naziru Halilu
 
