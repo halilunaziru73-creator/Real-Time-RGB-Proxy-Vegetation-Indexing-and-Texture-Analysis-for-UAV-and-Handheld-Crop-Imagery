@@ -30,6 +30,8 @@
   .bubble-name { font-size:12px; color:var(--text-secondary); margin:0 0 4px; }
   .bubble { background:var(--bg); border-radius:12px; border-top-left-radius:4px; padding:0.85rem 1rem;
     min-height:52px; display:flex; align-items:center; font-size:14.5px; line-height:1.6; }
+  .step-figure { width:100%; border-radius:10px; border:1px solid var(--border); margin:12px 0 4px; display:block; }
+  .step-figure-cap { font-size:11.5px; color:var(--text-secondary); margin:0 0 12px; }
   .figure { width:100%; border-radius:10px; border:1px solid var(--border); margin-bottom:1.25rem; display:block; }
   .ask-card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 1.5rem; margin-top:1.25rem; }
   .ask-title { font-size:15px; font-weight:600; margin:0 0 4px; }
@@ -71,6 +73,8 @@
       <div class="bubble-col">
         <p class="bubble-name">Naziru explains this step</p>
         <div class="bubble" id="detail"></div>
+        <img class="step-figure" id="step-figure" src="" alt="">
+        <p class="step-figure-cap" id="step-figure-cap"></p>
       </div>
     </div>
   </div>
@@ -129,7 +133,7 @@ async function sendQuestion() {
 }
 </script>
 <script>
-const steps = [{"t": "RGB / multispectral input", "d": "Built for the field, not the lab \u2014 works with a basic phone camera just as readily as a multispectral sensor, because most farmers don't have either a GPU cluster or a research-grade drone."}, {"t": "Streaming batch aligner", "d": "A memory-bounded streaming design means it runs on modest hardware without choking on large image batches \u2014 low-resource by design, not as an afterthought."}, {"t": "14 analysis modules", "d": "Every vegetation index, texture feature and NDVI/NDRE calculation traces back to a documented equation \u2014 nothing is a mystery black box."}, {"t": "Classical ML & optional DL", "d": "A fast classical baseline (PCA, KNN, K-Means) ships by default; deep-learning inference is there when you want it, not forced on you when you don't."}, {"t": "8-model benchmark", "d": "A 20,000-row negative-control dataset was run through the pipeline first \u2014 and it correctly scored at chance level, proving the tool doesn't just find patterns that aren't there."}, {"t": "Verifiable reporting framework", "d": "The Verifiable Reporting Framework exists because agricultural AI has a real, documented history of metric inflation and silent failures \u2014 this is the auditable checklist built specifically to stop that."}];
+const steps = [{"t": "RGB / multispectral input", "img": "../figures/Figure_02_demonstration_image_set.png", "d": "Built for the field, not the lab \u2014 works with a basic phone camera just as readily as a multispectral sensor, because most farmers don't have either a GPU cluster or a research-grade drone."}, {"t": "Streaming aligner", "img": "../figures/Figure_03_streaming_alignment_vegetation_index.png", "d": "A memory-bounded streaming batch aligner processes large image sets without loading everything into RAM at once \u2014 low-resource by design, not as an afterthought."}, {"t": "14 analysis modules", "img": "../figures/Figure_04_glcm_texture_contrastive_loss.png", "d": "Every vegetation index, GLCM texture feature, and NDVI/NDRE calculation traces back to a documented mathematical formulation across fourteen fully specified modules \u2014 nothing is a mystery black box."}, {"t": "Classical ML & DL", "img": "../figures/Figure_01_system_architecture_control_flow.png", "d": "A fast classical baseline (PCA, KNN, K-Means) ships by default through a dual-interface GUI (PyQt6 and Tkinter); optional pretrained deep-learning inference (ResNet101, Faster R-CNN) is there when you want it."}, {"t": "8-model benchmark", "img": "../figures/Figure_10_holdout_classifier_benchmark.png", "d": "A 20,000-row negative-control dataset was run through the pipeline first \u2014 and it correctly scored at chance level, proving the tool doesn't just find patterns that aren't there before trusting it on real photographs."}, {"t": "Verifiable reporting", "img": "../figures/Figure_11_real_classification_results.png", "d": "On 1,543 real crop-disease photos across 22 classes, classical features hit 33.8% balanced accuracy against 4.55% chance \u2014 reported through the Verifiable Reporting Framework, an auditable checklist built specifically to stop metric inflation."}];
 let idx = 0;
 let timer = null;
 const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -174,6 +178,18 @@ function render() {
   });
   document.getElementById('detail').textContent = 'Step ' + (idx + 1) + ' — ' + steps[idx].t + '. ' + steps[idx].d;
   document.getElementById('particle').setAttribute('cx', nodeX(idx, steps.length));
+  const fig = document.getElementById('step-figure');
+  const cap = document.getElementById('step-figure-cap');
+  if (steps[idx].img) {
+    fig.src = steps[idx].img;
+    fig.alt = steps[idx].t;
+    fig.style.display = 'block';
+    cap.textContent = 'Figure from the manuscript — ' + steps[idx].t;
+    cap.style.display = 'block';
+  } else {
+    fig.style.display = 'none';
+    cap.style.display = 'none';
+  }
 }
 
 function tick() { idx = (idx + 1) % steps.length; render(); }
