@@ -60,7 +60,7 @@
   <p class="metric">33.8% balanced accuracy vs 4.55% chance baseline</p>
   <div class="card">
     <p class="sim-label">Graphical abstract</p>
-    <img class="figure" src="../graphical_abstract.png" alt="Graphical abstract for N_GACL Vegetation Indexing Pipeline">
+    <img class="figure" src="graphical_abstract.png" alt="Graphical abstract for N_GACL Vegetation Indexing Pipeline">
     <p class="sim-label">Process simulation</p>
     <svg id="sim" viewBox="0 0 680 100" role="img" aria-label="Animated process simulation">
       <line x1="40" y1="55" x2="640" y2="55" stroke="var(--node)" stroke-width="1"/>
@@ -87,7 +87,7 @@
     <button class="ask-btn" id="ask-btn" onclick="sendQuestion()">Send question</button>
     <p class="ask-status" id="ask-status"></p>
   </div>
-  <a class="back" href="../README.md">&larr; Back to README</a>
+  <a class="back" href="https://github.com/halilunaziru73-creator/Real-Time-RGB-Proxy-Vegetation-Indexing-and-Texture-Analysis-for-UAV-and-Handheld-Crop-Imagery">&larr; Back to GitHub repository</a>
 </div>
 <script>
 async function sendQuestion() {
@@ -133,7 +133,7 @@ async function sendQuestion() {
 }
 </script>
 <script>
-const steps = [{"t": "RGB / multispectral input", "img": "../figures/Figure_02_demonstration_image_set.png", "d": "Built for the field, not the lab \u2014 works with a basic phone camera just as readily as a multispectral sensor, because most farmers don't have either a GPU cluster or a research-grade drone."}, {"t": "Streaming aligner", "img": "../figures/Figure_03_streaming_alignment_vegetation_index.png", "d": "A memory-bounded streaming batch aligner processes large image sets without loading everything into RAM at once \u2014 low-resource by design, not as an afterthought."}, {"t": "14 analysis modules", "img": "../figures/Figure_04_glcm_texture_contrastive_loss.png", "d": "Every vegetation index, GLCM texture feature, and NDVI/NDRE calculation traces back to a documented mathematical formulation across fourteen fully specified modules \u2014 nothing is a mystery black box."}, {"t": "Classical ML & DL", "img": "../figures/Figure_01_system_architecture_control_flow.png", "d": "A fast classical baseline (PCA, KNN, K-Means) ships by default through a dual-interface GUI (PyQt6 and Tkinter); optional pretrained deep-learning inference (ResNet101, Faster R-CNN) is there when you want it."}, {"t": "8-model benchmark", "img": "../figures/Figure_10_holdout_classifier_benchmark.png", "d": "A 20,000-row negative-control dataset was run through the pipeline first \u2014 and it correctly scored at chance level, proving the tool doesn't just find patterns that aren't there before trusting it on real photographs."}, {"t": "Verifiable reporting", "img": "../figures/Figure_11_real_classification_results.png", "d": "On 1,543 real crop-disease photos across 22 classes, classical features hit 33.8% balanced accuracy against 4.55% chance \u2014 reported through the Verifiable Reporting Framework, an auditable checklist built specifically to stop metric inflation."}];
+const steps = [{"t": "RGB / multispectral input", "img": "figures/Figure_02_demonstration_image_set.png", "d": "Built for the field, not the lab \u2014 works with a basic phone camera just as readily as a multispectral sensor, because most farmers don't have either a GPU cluster or a research-grade drone."}, {"t": "Streaming aligner", "img": "figures/Figure_03_streaming_alignment_vegetation_index.png", "d": "A memory-bounded streaming batch aligner processes large image sets without loading everything into RAM at once \u2014 low-resource by design, not as an afterthought."}, {"t": "14 analysis modules", "img": "figures/Figure_04_glcm_texture_contrastive_loss.png", "d": "Every vegetation index, GLCM texture feature, and NDVI/NDRE calculation traces back to a documented mathematical formulation across fourteen fully specified modules \u2014 nothing is a mystery black box."}, {"t": "Classical ML & DL", "img": "figures/Figure_01_system_architecture_control_flow.png", "d": "A fast classical baseline (PCA, KNN, K-Means) ships by default through a dual-interface GUI (PyQt6 and Tkinter); optional pretrained deep-learning inference (ResNet101, Faster R-CNN) is there when you want it."}, {"t": "8-model benchmark", "img": "figures/Figure_10_holdout_classifier_benchmark.png", "d": "A 20,000-row negative-control dataset was run through the pipeline first \u2014 and it correctly scored at chance level, proving the tool doesn't just find patterns that aren't there before trusting it on real photographs."}, {"t": "Verifiable reporting", "img": "figures/Figure_11_real_classification_results.png", "d": "On 1,543 real crop-disease photos across 22 classes, classical features hit 33.8% balanced accuracy against 4.55% chance \u2014 reported through the Verifiable Reporting Framework, an auditable checklist built specifically to stop metric inflation."}];
 let idx = 0;
 let timer = null;
 const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
