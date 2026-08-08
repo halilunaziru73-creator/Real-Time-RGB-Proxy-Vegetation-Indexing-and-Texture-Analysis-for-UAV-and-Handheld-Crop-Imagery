@@ -20,6 +20,8 @@ two complementary components:
    (HGAViT, GCATT, DHGNN, VLAE) and their composite training objective.
 
 
+![Graphical Abstract](graphical_abstract.png)
+
 ## Problem, Methodology, and Results
 
 **Problem.** Low-resource field agronomic image analysis lacks accessible, reproducible, and verifiable open-source tools that combine vegetation indexing, texture analysis, and transparent metric reporting — a gap that contributes to metric inflation and silent failures in agricultural decision-support systems.
