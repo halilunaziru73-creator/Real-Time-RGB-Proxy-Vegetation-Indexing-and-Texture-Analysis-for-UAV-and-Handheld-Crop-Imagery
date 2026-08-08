@@ -19,6 +19,15 @@ two complementary components:
    of the four architectural components proposed in the accompanying paper
    (HGAViT, GCATT, DHGNN, VLAE) and their composite training objective.
 
+
+## Problem, Methodology, and Results
+
+**Problem.** Low-resource field agronomic image analysis lacks accessible, reproducible, and verifiable open-source tools that combine vegetation indexing, texture analysis, and transparent metric reporting — a gap that contributes to metric inflation and silent failures in agricultural decision-support systems.
+
+**Methodology.** N_GACL is an open-source desktop software pipeline with a dual-interface GUI (PyQt6 GIS-style and Tkinter classic), built around a streaming, memory-bounded batch aligner. It integrates a fully labelled RGB proxy vegetation index family, multispectral NDVI/NDRE support, and GLCM texture extraction alongside classical machine-learning baselines (PCA, KNN, K-Means) and optional pretrained deep-learning inference (ResNet101/Faster R-CNN), with complete mathematical formulation for all fourteen analysis modules. An eight-model benchmark was executed across two datasets: a 20,000-row reference dataset (negative control) and an independent validation set of 1,543 real crop-disease photographs across 22 classes.
+
+**Results.** The negative control confirmed baseline architectural integrity at chance level. On the real validation set, classical features extracted by the pipeline achieved 33.8% balanced accuracy against a 4.55% chance baseline — a result that remained stable after removing augmented data. The study also introduces the Verifiable Reporting Framework (VRF), a source-code auditable checklist ensuring strict data fidelity and transparent metric reporting for agricultural decision-support systems.
+
 ## How to Run the Code
 
 ### 1. Clone the repository
