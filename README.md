@@ -20,8 +20,6 @@ two complementary components:
    (HGAViT, GCATT, DHGNN, VLAE) and their composite training objective.
 
 
-![Graphical Abstract](graphical_abstract.png)
-
 **Workflow sketch**
 
 ![Workflow Sketch](workflow_sketch.png)
