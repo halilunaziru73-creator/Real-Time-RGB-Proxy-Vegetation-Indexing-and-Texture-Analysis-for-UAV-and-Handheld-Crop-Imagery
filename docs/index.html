@@ -34,6 +34,13 @@
   h1 { font-size: 21px; font-weight: 600; margin: 0 0 6px; letter-spacing: -0.01em; }
   .metric { font-size: 14px; color: var(--text-secondary); margin: 0 0 1.75rem; }
   .card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 1.5rem; }
+  .solve-card { background: var(--accent-bg); border: 1px solid var(--accent-border); border-radius: 12px;
+    padding: 1.25rem 1.5rem; margin-bottom: 1.5rem; }
+  .solve-row { display:flex; gap:12px; margin-bottom:10px; align-items:flex-start; }
+  .solve-row:last-child { margin-bottom:0; }
+  .solve-tag { font-size:11px; font-weight:700; letter-spacing:.03em; text-transform:uppercase; color:var(--accent-text);
+    width:78px; flex-shrink:0; padding-top:1px; }
+  .solve-text { font-size:14px; line-height:1.55; color:var(--text); }
   .sim-label { font-size: 12px; color: var(--text-secondary); text-transform: uppercase; letter-spacing: .04em; margin: 0 0 8px; font-weight: 600; }
   svg#sim { width: 100%; height: auto; margin-bottom: 1.25rem; }
   #particle { transition: cx 1.6s ease-in-out; }
@@ -130,6 +137,11 @@
   </div>
   <h1>N_GACL Vegetation Indexing Pipeline</h1>
   <p class="metric">33.8% balanced accuracy vs 4.55% chance baseline</p>
+  <div class="solve-card">
+    <div class="solve-row"><span class="solve-tag">Problem</span><span class="solve-text">Most crop-health AI tools assume access to drones and GPU servers that most of the world's farmers simply don't have.</span></div>
+    <div class="solve-row"><span class="solve-tag">Solution</span><span class="solve-text">A free, open-source pipeline that runs on ordinary hardware, with a built-in honesty check against false patterns.</span></div>
+    <div class="solve-row"><span class="solve-tag">Impact</span><span class="solve-text">33.8% balanced accuracy on real data, validated first against a negative control that confirmed no false signal.</span></div>
+  </div>
   <div class="card">
     <p class="sim-label">Graphical abstract</p>
     <img class="figure" src="graphical_abstract.png" alt="Graphical abstract for N_GACL Vegetation Indexing Pipeline">
