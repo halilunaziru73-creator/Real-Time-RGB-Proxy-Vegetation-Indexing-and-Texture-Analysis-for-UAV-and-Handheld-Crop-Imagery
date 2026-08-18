@@ -20,13 +20,13 @@ two complementary components:
    (HGAViT, GCATT, DHGNN, VLAE) and their composite training objective.
 
 
+## Problem, Methodology, and Results
+
 **Workflow sketch**
 
 ![Workflow Sketch](workflow_sketch.png)
 
 [View interactive graphical abstract →](https://halilunaziru73-creator.github.io/Real-Time-RGB-Proxy-Vegetation-Indexing-and-Texture-Analysis-for-UAV-and-Handheld-Crop-Imagery/)
-
-## Problem, Methodology, and Results
 
 **Problem.** Low-resource field agronomic image analysis lacks accessible, reproducible, and verifiable open-source tools that combine vegetation indexing, texture analysis, and transparent metric reporting — a gap that contributes to metric inflation and silent failures in agricultural decision-support systems.
 
