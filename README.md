@@ -34,6 +34,14 @@ two complementary components:
 
 **Results.** The negative control confirmed baseline architectural integrity at chance level. On the real validation set, classical features extracted by the pipeline achieved 33.8% balanced accuracy against a 4.55% chance baseline — a result that remained stable after removing augmented data. The study also introduces the Verifiable Reporting Framework (VRF), a source-code auditable checklist ensuring strict data fidelity and transparent metric reporting for agricultural decision-support systems.
 
+## Download the Desktop App
+
+A packaged Windows desktop app is available, no Python installation required:
+
+**[⬇ Download main.exe](https://github.com/halilunaziru73-creator/Real-Time-RGB-Proxy-Vegetation-Indexing-and-Texture-Analysis-for-UAV-and-Handheld-Crop-Imagery/releases/tag/v1.1.0)**
+
+(~289 MB, Windows only. Run the .exe directly.)
+
 ## How to Run the Code
 
 ### 1. Clone the repository
