@@ -38,7 +38,7 @@ two complementary components:
 
 A packaged Windows desktop app is available, no Python installation required:
 
-**[⬇ Download main.exe](https://github.com/halilunaziru73-creator/Real-Time-RGB-Proxy-Vegetation-Indexing-and-Texture-Analysis-for-UAV-and-Handheld-Crop-Imagery/releases/tag/v1.1.0)**
+**[⬇ Download main.exe](https://github.com/halilunaziru73-creator/Real-Time-RGB-Proxy-Vegetation-Indexing-and-Texture-Analysis-for-UAV-and-Handheld-Crop-Imagery/releases/download/v1.1.0/main.exe)**
 
 (~289 MB, Windows only. Run the .exe directly.)
 
