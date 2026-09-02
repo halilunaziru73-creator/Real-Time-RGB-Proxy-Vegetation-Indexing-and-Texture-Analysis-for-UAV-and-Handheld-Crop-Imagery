@@ -9,15 +9,15 @@ N_GACL is a desktop pipeline for exploratory agronomic image analysis, combining
 two complementary components:
 
 1. **The classical agronomic image-analysis pipeline** (`core/`, `qgis_ui/`,
-   `main.py`, `main_classic.py`) — a desktop tool for exploratory agronomic image
-   analysis, including streaming batch alignment, RGB-proxy vegetation indices,
-   GLCM texture analysis, PCA/k-NN/K-Means clustering, optional pretrained
-   ResNet101/Faster R-CNN models, and UAV multispectral support.
+ `main.py`, `main_classic.py`), a desktop tool for exploratory agronomic image
+ analysis, including streaming batch alignment, RGB-proxy vegetation indices,
+ GLCM texture analysis, PCA/k-NN/K-Means clustering, optional pretrained
+ ResNet101/Faster R-CNN models, and UAV multispectral support.
 
 2. **The GACL reference implementation** (`gacl/`, `train_gacl.py`,
-   `evaluate_gacl.py`, `check_learnable_structure.py`) — a runnable implementation
-   of the four architectural components proposed in the accompanying paper
-   (HGAViT, GCATT, DHGNN, VLAE) and their composite training objective.
+ `evaluate_gacl.py`, `check_learnable_structure.py`), a runnable implementation
+ of the four architectural components proposed in the accompanying paper
+ (HGAViT, GCATT, DHGNN, VLAE) and their composite training objective.
 
 
 ## Problem, Methodology, and Results
@@ -28,11 +28,11 @@ two complementary components:
 
 [View interactive graphical abstract →](https://halilunaziru73-creator.github.io/Real-Time-RGB-Proxy-Vegetation-Indexing-and-Texture-Analysis-for-UAV-and-Handheld-Crop-Imagery/)
 
-**Problem.** Low-resource field agronomic image analysis lacks accessible, reproducible, and verifiable open-source tools that combine vegetation indexing, texture analysis, and transparent metric reporting — a gap that contributes to metric inflation and silent failures in agricultural decision-support systems.
+**Problem.** Low-resource field agronomic image analysis lacks accessible, reproducible, and verifiable open-source tools that combine vegetation indexing, texture analysis, and transparent metric reporting, a gap that contributes to metric inflation and silent failures in agricultural decision-support systems.
 
 **Methodology.** N_GACL is an open-source desktop software pipeline with a dual-interface GUI (PyQt6 GIS-style and Tkinter classic), built around a streaming, memory-bounded batch aligner. It integrates a fully labelled RGB proxy vegetation index family, multispectral NDVI/NDRE support, and GLCM texture extraction alongside classical machine-learning baselines (PCA, KNN, K-Means) and optional pretrained deep-learning inference (ResNet101/Faster R-CNN), with complete mathematical formulation for all fourteen analysis modules. An eight-model benchmark was executed across two datasets: a 20,000-row reference dataset (negative control) and an independent validation set of 1,543 real crop-disease photographs across 22 classes.
 
-**Results.** The negative control confirmed baseline architectural integrity at chance level. On the real validation set, classical features extracted by the pipeline achieved 33.8% balanced accuracy against a 4.55% chance baseline — a result that remained stable after removing augmented data. The study also introduces the Verifiable Reporting Framework (VRF), a source-code auditable checklist ensuring strict data fidelity and transparent metric reporting for agricultural decision-support systems.
+**Results.** The negative control confirmed baseline architectural integrity at chance level. On the real validation set, classical features extracted by the pipeline achieved 33.8% balanced accuracy against a 4.55% chance baseline, a result that remained stable after removing augmented data. The study also introduces the Verifiable Reporting Framework (VRF), a source-code auditable checklist ensuring strict data fidelity and transparent metric reporting for agricultural decision-support systems.
 
 ## Download the Desktop App
 
@@ -55,15 +55,15 @@ cd Real-Time-RGB-Proxy-Vegetation-Indexing-and-Texture-Analysis-for-UAV-and-Hand
 
 ```bash
 python -m venv venv
-source venv/bin/activate        # Windows: venv\Scripts\activate
+source venv/bin/activate # Windows: venv\Scripts\activate
 pip install -r requirements.txt
 ```
 
 ## Running the classical pipeline
 
 ```bash
-python main.py            # QGIS-style GIS Workbench (PyQt6)
-python main_classic.py    # simpler Tkinter app (no PyQt6 required)
+python main.py # QGIS-style GIS Workbench (PyQt6)
+python main_classic.py # simpler Tkinter app (no PyQt6 required)
 ```
 
 ## Running the GACL reference implementation
@@ -95,23 +95,23 @@ responsive.
 
 ```
 N_GACL/
-├── main.py, main_classic.py       # classical pipeline entry points
-├── core/                          # classical pipeline analysis modules
-├── qgis_ui/                       # PyQt6 GIS Workbench interface (includes gacl_panel.py)
-├── gacl/                          # GACL reference implementation
-│   ├── hgavit.py                  # Hypergraph-guided attention vision transformer
-│   ├── gcatt.py                   # Geometry-conditioned attention
-│   ├── dhgnn.py                   # Dynamic hypergraph neural network
-│   ├── vlae.py                    # Variational latent autoencoder
-│   ├── losses.py                  # Composite training objective
-│   ├── model.py                   # Composite model wiring
-│   ├── dataset.py                 # Tabular dataset loader (GACL_Data.xlsx)
-│   └── image_dataset.py           # Real image-based data loader
-├── train_gacl.py, evaluate_gacl.py       # GACL training and evaluation scripts (tabular data)
-├── train_gacl_real_images.py             # Image-based training and evaluation script
-├── check_learnable_structure.py          # Dataset-validity check (tabular data)
-├── GACL_Data.xlsx                        # 20,000-row tabular reference dataset
-├── figures/                              # 12 manuscript figures, extracted directly from the manuscript
+├── main.py, main_classic.py # classical pipeline entry points
+├── core/ # classical pipeline analysis modules
+├── qgis_ui/ # PyQt6 GIS Workbench interface (includes gacl_panel.py)
+├── gacl/ # GACL reference implementation
+│ ├── hgavit.py # Hypergraph-guided attention vision transformer
+│ ├── gcatt.py # Geometry-conditioned attention
+│ ├── dhgnn.py # Dynamic hypergraph neural network
+│ ├── vlae.py # Variational latent autoencoder
+│ ├── losses.py # Composite training objective
+│ ├── model.py # Composite model wiring
+│ ├── dataset.py # Tabular dataset loader (GACL_Data.xlsx)
+│ └── image_dataset.py # Real image-based data loader
+├── train_gacl.py, evaluate_gacl.py # GACL training and evaluation scripts (tabular data)
+├── train_gacl_real_images.py # Image-based training and evaluation script
+├── check_learnable_structure.py # Dataset-validity check (tabular data)
+├── GACL_Data.xlsx # 20,000-row tabular reference dataset
+├── figures/ # 12 manuscript figures, extracted directly from the manuscript
 └── requirements.txt
 ```
 
@@ -121,45 +121,45 @@ All 12 figures from the manuscript, extracted directly from the manuscript, are
 in `figures/`:
 
 ![System architecture and control-flow schematics](figures/Figure_01_system_architecture_control_flow.png)
-**Figure 1** — System architecture and control-flow schematics.
+**Figure 1**, System architecture and control-flow schematics.
 
 ![Demonstration image set](figures/Figure_02_demonstration_image_set.png)
-**Figure 2** — Demonstration image set: eight procedurally generated sample
+**Figure 2**, Demonstration image set: eight procedurally generated sample
 images.
 
 ![Streaming alignment and RGB-proxy vegetation index](figures/Figure_03_streaming_alignment_vegetation_index.png)
-**Figure 3** — Streaming alignment and RGB-proxy vegetation/water index
+**Figure 3**, Streaming alignment and RGB-proxy vegetation/water index
 computation.
 
 ![GLCM texture and contrastive-loss diagnostics](figures/Figure_04_glcm_texture_contrastive_loss.png)
-**Figure 4** — GLCM texture, descriptor invariance, and contrastive-loss
+**Figure 4**, GLCM texture, descriptor invariance, and contrastive-loss
 diagnostics.
 
 ![Batch summary and classification diagnostics](figures/Figure_05_batch_summary_trend_classification.png)
-**Figure 5** — Batch summary, trend, and classification diagnostics.
+**Figure 5**, Batch summary, trend, and classification diagnostics.
 
 ![Optional sensing modalities and canopy segmentation](figures/Figure_06_optional_sensing_canopy_segmentation.png)
-**Figure 6** — Optional sensing modalities and canopy segmentation.
+**Figure 6**, Optional sensing modalities and canopy segmentation.
 
 ![GIS Workbench session I](figures/Figure_07_gis_workbench_session1_index_layers.png)
-**Figure 7** — GIS Workbench live session I: overview and index layers.
+**Figure 7**, GIS Workbench live session I: overview and index layers.
 
 ![GIS Workbench session II](figures/Figure_08_gis_workbench_session2_crossc_rop_spectral.png)
-**Figure 8** — GIS Workbench live session II: cross-crop, root, and spectral
+**Figure 8**, GIS Workbench live session II: cross-crop, root, and spectral
 diagnostics.
 
 ![GIS Workbench session III](figures/Figure_09_gis_workbench_session3_gacl_panel.png)
-**Figure 9** — GIS Workbench live session III: GACL panel integration.
+**Figure 9**, GIS Workbench live session III: GACL panel integration.
 
 ![Hold-out classifier benchmark](figures/Figure_10_holdout_classifier_benchmark.png)
-**Figure 10** — Real held-out classifier benchmark on the reference dataset.
+**Figure 10**, Real held-out classifier benchmark on the reference dataset.
 
 ![Real classification results](figures/Figure_11_real_classification_results.png)
-**Figure 11** — Real classification results on independently sourced
+**Figure 11**, Real classification results on independently sourced
 crop-disease photographs.
 
 ![Representative photographs per class](figures/Figure_12_representative_photos_per_class.png)
-**Figure 12** — One representative photograph per class (22 classes: cotton,
+**Figure 12**, One representative photograph per class (22 classes: cotton,
 rice, maize, wheat, sugarcane, and others).
 
 ## Data and evaluation notes
